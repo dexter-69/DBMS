@@ -1,0 +1,16 @@
+1)
+SELECT film.title FROM film JOIN film_category ON film.film_id = film_category.film_id JOIN category ON film_category.category_id = category.category_id WHERE film.rating='PG-13' AND category.name='Comedy';
+
+2)
+SELECT title, count(rental.inventory_id) as count from film JOIN inventory ON inventory.film_id = film.film_id JOIN rental ON inventory.inventory_id = rental.inventory_id JOIN film_category ON film.film_id = film_category.film_id JOIN category ON film_category.category_id = category.category_id WHERE category.name='Horror' group by title order by count desc limit 3;
+
+3)
+SELECT customer_list.ID, customer_list.name, customer_list.address, customer_list.`zip code`, customer_list.phone, customer_list.city, customer_list.country, customer_list.notes, customer_list.SID FROM customer_list JOIN rental ON customer_list.ID = rental.customer_id JOIN inventory ON rental.inventory_id = inventory.inventory_id JOIN film_category ON inventory.film_id = film_category.film_id JOIN category ON film_category.category_id = category.category_id WHERE customer_list.country='India' and category.name='Sports' ORDER BY customer_list.name;
+
+4)
+SELECT customer_list.ID, customer_list.name, customer_list.address, customer_list.`zip code`, customer_list.phone, customer_list.city, customer_list.country, customer_list.notes, customer_list.SID FROM customer_list JOIN rental ON customer_list.ID = rental.customer_id JOIN inventory ON rental.inventory_id = inventory.inventory_id JOIN film_actor ON inventory.film_id = film_actor.film_id JOIN actor on actor.actor_id = film_actor.actor_id WHERE customer_list.country='Canada' and actor.first_name='NICK' and actor.last_name='WAHLBERG';
+
+5)
+SELECT count(*) from film_actor JOIN actor on actor.actor_id = film_actor.actor_id WHERE actor.first_name='SEAN' and actor.last_name='WILLIAMS';
+
+
